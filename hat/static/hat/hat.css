@@ -1,0 +1,109 @@
+.hat {
+    position: absolute;
+    margin-left: 40%;
+    bottom: 100px;
+    width: 500px;
+    height: auto;
+    rotate: 180deg;
+}
+
+.hat.finished {
+    animation: 3s infinite hat-spin;
+}
+
+.hat-pull {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    animation: 5s hand-pull ease-in-out;
+}
+
+.hat-pull img {
+    width: 300px;
+    height: auto;
+}
+
+.hat-pull p {
+    position: absolute;
+    top: 20px;
+    text-align: center;
+    width: 500px;
+    height: fit-content;
+    min-height: 100px;
+    background: beige;
+    right: -80px;
+    animation: 5s item-appear ease-in-out;
+}
+
+.hat-pull.finished p {
+    opacity: 0;
+    animation: none;
+}
+
+.hat-pull.finished {
+    animation: 1s hand-wave infinite;
+}
+
+@keyframes hand-pull {
+    from {
+        top: 20px;
+    }
+
+    25% {
+        top: 100px;
+        rotate: 180deg;
+    }
+
+    50% {
+        top: 400px;
+        rotate: 180deg;
+    }
+
+    75% {
+        top: 100px;
+        rotate: 0deg;
+    }
+
+    to {
+        top: 20px;
+    }
+}
+
+@keyframes item-appear {
+    from {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 100%;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes hat-spin {
+    from {
+        rotate: 0deg;
+    }
+    to {
+        rotate: 360deg;
+    }
+}
+
+@keyframes hand-wave {
+    from {
+        rotate: -45deg;
+    }
+    50% {
+        rotate: 45deg;
+    }
+    to {
+        rotate: -45deg;
+    }
+}
