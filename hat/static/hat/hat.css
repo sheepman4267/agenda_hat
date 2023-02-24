@@ -33,6 +33,7 @@
     background: beige;
     right: -80px;
     animation: 5s item-appear ease-in-out;
+    font-size: xx-large;
 }
 
 .hat-pull.finished p {
