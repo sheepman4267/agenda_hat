@@ -8,12 +8,14 @@
 </head>
 <body>
 <h1>Agenda Hat</h1>
-<div class="hat-pull {{ hat_class }}">
-    <img src="{% static 'hat/hand.png' %}">
-    <p>
-        {{ item.text }}
-    </p>
+<div class="hat-container">
+    <div class="hat-pull {{ hat_class }}">
+        <img src="{% static 'hat/hand.png' %}">
+        <p>
+            {{ item.text }}
+        </p>
+    </div>
+    <img class="hat {{ hat_class }}" src="{% static 'hat/tophat.png' %}" alt="hat!">
 </div>
-<img class="hat {{ hat_class }}" src="{% static 'hat/tophat.png' %}" alt="hat!">
 </body>
 </html>
