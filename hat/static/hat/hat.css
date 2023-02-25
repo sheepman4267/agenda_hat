@@ -1,21 +1,36 @@
+body {
+    text-align: center;
+}
+
+.h1 {
+    height: 80px;
+}
+
 .hat {
-    position: absolute;
-    margin-left: 40%;
-    bottom: 100px;
     width: 500px;
     height: auto;
     rotate: 180deg;
+    margin-top: auto;
+    justify-self: end;
 }
 
 .hat.finished {
     animation: 3s infinite hat-spin;
 }
 
+.hat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+}
+
 .hat-pull {
-    position: absolute;
-    top: 20px;
-    left: 50%;
+    display: grid;
     animation: 5s hand-pull ease-in-out;
+    grid-template-columns: 100% 100%;
+    width: 300px;
+    align-self: center;
 }
 
 .hat-pull img {
@@ -24,16 +39,14 @@
 }
 
 .hat-pull p {
-    position: absolute;
-    top: 20px;
     text-align: center;
     width: 500px;
     height: fit-content;
     min-height: 100px;
     background: beige;
-    right: -80px;
     animation: 5s item-appear ease-in-out;
     font-size: xx-large;
+    margin-left: -132%;
 }
 
 .hat-pull.finished p {
@@ -47,26 +60,30 @@
 
 @keyframes hand-pull {
     from {
-        top: 20px;
     }
 
     25% {
-        top: 100px;
+        transform: translate(0, -10vh);
         rotate: 180deg;
     }
 
     50% {
-        top: 400px;
+        transform: translate(0, -60vh);
         rotate: 180deg;
     }
 
-    75% {
-        top: 100px;
+    60% {
+        transform: translate(0, -40vh);
+        rotate: 180deg;
+    }
+
+    80% {
+        transform: translate(0, -10vh);
         rotate: 0deg;
     }
 
     to {
-        top: 20px;
+        transform: translate(0);
     }
 }
 
@@ -75,11 +92,11 @@
         opacity: 0;
     }
 
-    50% {
+    55% {
         opacity: 0;
     }
 
-    75% {
+    60% {
         opacity: 100%;
     }
 
