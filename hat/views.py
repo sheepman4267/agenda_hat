@@ -5,7 +5,10 @@ import random
 from .models import Item
 
 
-def pull_item(request):
+def pull_item(request, item_pk=0):
+    item = Item.objects.filter(pk=item_pk).first()
+    if Item:
+
     item = ''
     hat_class = ''
     try:
