@@ -1,0 +1,4 @@
+django
+honcho
+uvicorn
+gunicorn
