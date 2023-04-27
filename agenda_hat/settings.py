@@ -21,16 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-4=nvn+3!^^#3489hot0brrx-!m+efx_^+x@^mwq^)c-$#u^^_m'
-SECRET_KEY = os.environ['HAT_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = {'False': False, 'True': True}[os.environ['HAT_DEBUG']]
 
-ALLOWED_HOSTS = os.environ['HAT_ALLOWED_HOSTS'].split(',')
-CSRF_TRUSTED_ORIGINS = ['https://'+host for host in ALLOWED_HOSTS]
+if DEBUG:
+    SECRET_KEY = 'django-insecure-4=nvn+3!^^#3489hot0brrx-!m+efx_^+x@^mwq^)c-$#u^^_m'
 
-STATIC_ROOT = Path(os.environ['HAT_STATIC_ROOT'])
+else:
+    SECRET_KEY = os.environ['HAT_SECRET_KEY']
+    ALLOWED_HOSTS = os.environ['HAT_ALLOWED_HOSTS'].split(',')
+    CSRF_TRUSTED_ORIGINS = ['https://'+host for host in ALLOWED_HOSTS]
+    STATIC_ROOT = Path(os.environ['HAT_STATIC_ROOT'])
 
 # Application definition
 

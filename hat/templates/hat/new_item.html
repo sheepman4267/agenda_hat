@@ -1,0 +1,17 @@
+{% load static %}
+
+<div id="hat-pull" class="hat-pull {{ hat_class }} new">
+    <img src="{% static 'hat/hand.png' %}">
+    <div class="message new">
+        <form>
+            {% csrf_token %}
+            {{ form.text }}
+            <button hx-post="{% url 'new-item' %}" hx-target="#hat-pull" hx-swap="outerHTML settle:0.5s swap:0.5s"
+                    _="on click add .lock to #hat-pull">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+{% include 'hat/counter-snippet.html' with remaining_items=remaining_items %}

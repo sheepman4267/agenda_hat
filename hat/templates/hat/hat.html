@@ -4,18 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Agenda Hat</title>
-    <link rel="stylesheet" href="{% static 'hat/hat.css' %}"
+    <link rel="stylesheet" href="{% static 'hat/hat.css' %}">
+    <script src="https://unpkg.com/htmx.org@1.9.1"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.8"></script>
 </head>
 <body>
-<h1>Agenda Hat</h1>
+<div class="sidebar left">
+    <h1>Agenda Hat</h1>
+    <button hx-get="{% url 'new-item' %}" hx-target="#hat-pull" hx-swap="outerHTML">Add Something...</button>
+    <a href="{% url 'pull-item' %}"><button>Next Item</button></a>
+</div>
 <div class="hat-container">
-    <div class="hat-pull {{ hat_class }}">
+    <div class="hat-pull {{ hat_class }}" id="hat-pull">
         <img src="{% static 'hat/hand.png' %}">
-        <p>
+        <div class="message">
             {{ item.text }}
-        </p>
+        </div>
     </div>
     <img class="hat {{ hat_class }}" src="{% static 'hat/tophat.png' %}" alt="hat!">
+</div>
+<div class="sidebar right">
+    {% include 'hat/counter-snippet.html' %}
+    <ul>
+        {% for item in past_items %}
+            <li>
+                <del>{{ item.text }}</del>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
 </body>
 </html>
