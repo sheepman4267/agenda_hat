@@ -22,6 +22,7 @@ ENV HAT_SQLITE3_PATH=${HAT_SQLITE3_PATH}
 
 EXPOSE 8000/
 
-ENTRYPOINT python manage.py migrate \
+ENTRYPOINT echo Migrating.. \
+    && python manage.py migrate \
     && python manage.py collectstatic --no-input \
     && honcho start
