@@ -14,7 +14,7 @@ def get_remaining_items():
 def index(request):
     return render(request, 'hat/hat.html', {
         'hat_class': 'index',  # todo: make timedelta in line 12 configurable
-        # 'past_items': Item.objects.filter(pulled=True, pulled_at__range=(timezone.now() - timezone.timedelta(hours=6), timezone.now())),
+        'past_items': Item.objects.filter(pulled=True, pulled_at__range=(timezone.now() - timezone.timedelta(hours=6), timezone.now())),
         'remaining_items': get_remaining_items(),
     })
 
@@ -33,7 +33,7 @@ def pull_item(request):
     return render(request, 'hat/hat.html', {
         'item': item,
         'hat_class': hat_class,
-        # 'past_items': Item.objects.filter(pulled=True, pulled_at__range=(timezone.now() - timezone.timedelta(hours=6), timezone.now())),
+        'past_items': Item.objects.filter(pulled=True, pulled_at__range=(timezone.now() - timezone.timedelta(hours=6), timezone.now())),
         'remaining_items': get_remaining_items(),
     })
 
