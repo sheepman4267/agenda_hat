@@ -45,7 +45,6 @@ class CreateItemView(CreateView):
         'text',
     ]
     success_url = reverse_lazy('new-item')
-    print(Item.objects.filter(pulled=False))
     extra_context = {
         'remaining_items': get_remaining_items
     }
