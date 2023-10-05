@@ -1,0 +1,6 @@
+<div class="box">
+    {% if item.finished %}<s>{% endif %}
+    <span>{{ item.text }}</span>
+    {% if item.finished %}</s>{% endif %}
+    <button hx-get="{% url "update-item" item.pk %}" hx-swap="outerHTML" hx-target="closest .box">Details</button>
+</div>

@@ -1,16 +1,18 @@
-<div id="counter" hx-swap-oob="true">
-    <h2>Are we there yet?</h2>
-    {% if remaining_items == 0 %}
-        <span class="announcement">
-            Yes!
-        </span>
-    {% elif remaining_items < 3 %}
-        <span class="announcement">
-            Almost! There are only {{ remaining_items }} agenda items left!
-        </span>
-    {% else %}
-        <span class="announcement">
-            NO. There are {{ remaining_items }} agenda items left.
-        </span>
-    {% endif %}
-</div>
+{% with meeting.new_hat_items.count as count %}
+    <div id="counter" hx-swap-oob="true">
+        <h2>Are we there yet?</h2>
+        {% if count == 0 %}
+            <span class="announcement">
+                Yes!
+            </span>
+        {% elif count < 3 %}
+            <span class="announcement">
+                Almost! There are only {{ count }} agenda items left!
+            </span>
+        {% else %}
+            <span class="announcement">
+                NO. There are {{ count }} agenda items left.
+            </span>
+        {% endif %}
+    </div>
+{% endwith %}

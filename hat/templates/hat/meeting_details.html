@@ -1,0 +1,36 @@
+{% extends 'hat/base.html' %}
+
+{% block main_attrs %}
+    data-meeting-pk="{{ meeting.pk }}"
+{% endblock %}
+
+{% block content %}
+    <h1>{{ meeting.title }}</h1>
+    <span>{{ meeting.date }}</span>
+    <button hx-get="{% url 'new-item' %}" hx-swap="outerHTML">New Item</button>
+    <h2>Major Items</h2>
+    <ul>
+        {% for item in meeting.major_items %}
+            <li>
+                {% include 'hat/item.html' with item=item %}
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Hat Items</h2>
+    <section class="tool-bar">
+        <button _="on click toggle *display of <#hat-items/>">Show/Hide Hat Items</button>
+        <a href="{% url 'pull-item' meeting_pk=meeting.pk %}"><button class="big">Hat Time!</button></a>
+    </section>
+    <ul id="hat-items">
+        {% for item in meeting.hat_items %}
+            <li>
+                {% include 'hat/item.html' with item=item %}
+            </li>
+        {% endfor %}
+        {% for item in meeting.finished_hat_items %}
+            <li>
+                {% include 'hat/item.html' with item=item %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
