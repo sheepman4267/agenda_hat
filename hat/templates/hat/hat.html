@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Agenda Hat</title>
+    <link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.1">
     <link rel="stylesheet" href="{% static 'hat/hat.css' %}">
     <script src="https://unpkg.com/htmx.org@1.9.1"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.8"></script>
@@ -11,14 +12,20 @@
 <body>
 <div class="sidebar left">
     <h1>Agenda Hat</h1>
-    <button hx-get="{% url 'new-item' %}" hx-target="#hat-pull" hx-swap="outerHTML">Add Something...</button>
-    <a href="{% url 'pull-item' %}"><button>Next Item</button></a>
+{#    <button hx-get="{% url 'new-item' %}" hx-target="#hat-pull" hx-swap="outerHTML">Add Something...</button>#} {# TODO: Re-add this later #}
+    <a href="{% url 'pull-item' meeting_pk=meeting.pk %}"><button>Next Item</button></a>
 </div>
 <div class="hat-container">
     <div class="hat-pull {{ hat_class }}" id="hat-pull">
         <img src="{% static 'hat/hand.png' %}">
-        <div class="message">
+        <div class="message f-col padding-block">
             {{ item.text }}
+            {% if item %}
+                <section class="tool-bar width:100% f-row justify-content:center">
+                    <a href="{% url 'finish-item' pk=item.pk %}"><button>Finish Item</button></a>
+                    <button hx-get="{% url 'defer-item' pk=item.pk %}" hx-swap="outerHTML">Table Item</button>
+                </section>
+            {% endif %}
         </div>
     </div>
     <img class="hat {{ hat_class }}" src="{% static 'hat/tophat.png' %}" alt="hat!">

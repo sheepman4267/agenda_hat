@@ -1,0 +1,27 @@
+{% load static %}
+
+<div id="hat-pull" class="hat-pull {{ hat_class }} new box">
+    <div class="message new">
+        <form class="table rows" method="post" action="{% block action %}{% endblock %}">
+            {% csrf_token %}
+            <input type="hidden" name="meeting" _="on load set my @value to @data-meeting-pk of closest <main/>">
+            {{ form.text }}
+            <p>
+                <label>Major Item</label>
+                {{ form.major }}
+            </p>
+            <p>
+                <label>Finished</label>
+                {{ form.finished }}
+            </p>
+
+{#            <button hx-post="{% block action %}{% endblock %}" hx-target="#hat-pull" hx-swap="outerHTML settle:0.5s swap:0.5s"#}
+{#                    _="on click add .lock to #hat-pull">#}
+{#                Submit#}
+{#            </button>#}
+            <input type="submit">
+        </form>
+    </div>
+</div>
+
+{% include 'hat/counter-snippet.html' with remaining_items=remaining_items %}
