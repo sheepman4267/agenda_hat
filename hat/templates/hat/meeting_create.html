@@ -1,6 +1,5 @@
 <form method="post" action="{% url "new-meeting" %}">
     {% csrf_token %}
-    {{ form.title }}
-    {{ form.date }}
+    {{ form }}
     <input type="submit">
 </form>
