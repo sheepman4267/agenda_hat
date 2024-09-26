@@ -7,7 +7,8 @@ import random
 
 from .models import Item, Meeting
 
-from .forms import ItemForm
+from .forms import ItemForm, MeetingCreateForm
+
 
 # def index(request):
 #     return render(request, 'hat/hat.html', {
@@ -98,10 +99,7 @@ class MeetingDetailView(DetailView):
 class MeetingCreateView(CreateView):
     model = Meeting
     template_name = "hat/meeting_create.html"
-    fields = [
-        'title',
-        'date',
-    ]
+    form_class = MeetingCreateForm
 
 
 class ItemUpdateView(UpdateView):

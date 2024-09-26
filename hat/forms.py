@@ -1,5 +1,5 @@
-from django.forms import ModelForm
-from .models import Item
+from django.forms import ModelForm, widgets
+from .models import Item, Meeting
 
 
 class ItemForm(ModelForm):
@@ -10,3 +10,15 @@ class ItemForm(ModelForm):
         'major',
         'finished',
     ]
+
+
+class MeetingCreateForm(ModelForm):
+    class Meta:
+        widgets = {
+            'date': widgets.DateInput(attrs={'type': 'date'}),
+        }
+        model = Meeting
+        fields = [
+            'title',
+            'date',
+        ]
