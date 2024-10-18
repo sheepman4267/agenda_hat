@@ -94,6 +94,7 @@ ul {
     width: 500px;
     height: fit-content;
     min-height: 100px;
+    line-height: 100%;
     background: beige;
     animation: 5s item-appear ease-in-out;
     font-size: xx-large;
