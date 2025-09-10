@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse_lazy
+import datetime
 
 
 # Create your models here.
@@ -35,7 +36,7 @@ class Item(models.Model):
 
 class Meeting(models.Model):
     title = models.CharField(null=False, max_length=50)
-    date = models.DateField(null=False)
+    date = models.DateField(null=False, default=datetime.date.today)
 
     def get_absolute_url(self):
         return reverse_lazy('meeting', kwargs={'pk': self.pk})
