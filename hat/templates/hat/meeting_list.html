@@ -1,16 +1,12 @@
 {% extends 'hat/base.html' %}
 {% block content %}
     <h2>Meetings</h2>
+    <button hx-get="{% url "new-meeting" %}" hx-swap="outerHTML">New Meeting</button>
     <ul>
         {% for meeting in meeting_list %}
             <li>
                 <a href="{% url 'meeting' meeting.pk %}">{{ meeting.date }}</a>
             </li>
         {% endfor %}
-        <li>
-            <button hx-get="{% url "new-meeting" %}" hx-swap="outerHTML">
-                +
-            </button>
-        </li>
     </ul>
 {% endblock %}
