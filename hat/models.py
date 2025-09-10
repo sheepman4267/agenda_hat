@@ -6,7 +6,6 @@ import datetime
 # Create your models here.
 class Item(models.Model):
     text = models.TextField()
-    pulled = models.BooleanField(default=False, editable=False)
     pulled_at = models.DateTimeField(null=True, blank=True)
     finished = models.BooleanField(default=False)
     major = models.BooleanField(default=False)
@@ -48,7 +47,7 @@ class Meeting(models.Model):
         return self.items.filter(major=False, finished=False)
 
     def new_hat_items(self):
-        return self.items.filter(major=False, finished=False, pulled=False)
+        return self.items.filter(major=False, finished=False)
 
     def finished_hat_items(self):
         return self.items.filter(major=False, finished=True)

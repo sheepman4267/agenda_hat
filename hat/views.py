@@ -28,8 +28,7 @@ def pull_item(request, meeting_pk):
     hat_class = ''
     meeting = Meeting.objects.get(pk=meeting_pk)
     try:
-        item = random.choice(meeting.hat_items().filter(pulled=False))
-        item.pulled = True
+        item = random.choice(meeting.hat_items().filter(finished=False))
         item.pulled_at = timezone.now()
         item.save()
     except IndexError:
@@ -91,7 +90,7 @@ class MeetingDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(MeetingDetailView, self).get_context_data(**kwargs)
-        context['finished_items'] = context['meeting'].items.filter(pulled=True, finished=True)
+        context['finished_items'] = context['meeting'].items.filter(finished=True)
 
         return context
 

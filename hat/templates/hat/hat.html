@@ -11,9 +11,7 @@
 </head>
 <body>
 <div class="sidebar left">
-    <h1>Agenda Hat</h1>
-{#    <button hx-get="{% url 'new-item' %}" hx-target="#hat-pull" hx-swap="outerHTML">Add Something...</button>#} {# TODO: Re-add this later #}
-    <a href="{% url 'pull-item' meeting_pk=meeting.pk %}"><button>Next Item</button></a>
+    <a href="{% url 'meeting' pk=meeting.pk %}">Back</a>
 </div>
 <div class="hat-container">
     <div class="hat-pull {{ hat_class }}" id="hat-pull">
