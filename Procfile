@@ -1,1 +1,1 @@
-web: python -m uvicorn --port 8000 agenda_hat.asgi:application
+web: python -m uvicorn --host 0.0.0.0 --port 8000 agenda_hat.asgi:application

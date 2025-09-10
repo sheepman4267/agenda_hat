@@ -1,0 +1,11 @@
+services:
+  agenda_hat:
+    image: sheepman4267/agenda_hat:v0.3.3
+    volumes:
+      - "./agenda_hat_db:/db"
+    environment:
+      - HAT_SECRET_KEY=set-a-secret-key-please
+      - HAT_ALLOWED_HOSTS=localhost
+      - HAT_SQLITE3_PATH=/db/db.sqlite3
+    ports:
+      - 8000:8000
