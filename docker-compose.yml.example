@@ -1,6 +1,6 @@
 services:
   agenda_hat:
-    image: sheepman4267/agenda_hat:v0.3.3
+    image: sheepman4267/agenda_hat:v0.4.0
     volumes:
       - "./agenda_hat_db:/db"
     environment:
