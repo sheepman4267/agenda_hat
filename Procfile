@@ -1,1 +1,1 @@
-web: python -m gunicorn agenda_hat.asgi:application -k uvicorn.workers.UvicornWorker
+web: python -m uvicorn --port 8000 agenda_hat.asgi:application
