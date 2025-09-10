@@ -13,14 +13,14 @@
 <div class="sidebar left">
     <a href="{% url 'meeting' pk=meeting.pk %}">Back</a>
 </div>
-<div class="hat-container">
+<div class="hat-container" id="hat-container">
     <div class="hat-pull {{ hat_class }}" id="hat-pull">
         <img src="{% static 'hat/hand.png' %}">
         <div class="message f-col padding-block">
             {{ item.text }}
             {% if item %}
                 <section class="tool-bar width:100% f-row justify-content:center">
-                    <button hx-get="{% url 'finish-item' pk=item.pk %}" hx-swap="outerHTML" hx-target="#hat-pull" hx-select="#hat-pull">Finish Item</button>
+                    <button hx-get="{% url 'finish-item' pk=item.pk %}" hx-swap="outerHTML" hx-target="#hat-container" hx-select="#hat-container">Finish Item</button>
                     <button hx-get="{% url 'defer-item' pk=item.pk %}" hx-swap="outerHTML">Table Item</button>
                 </section>
             {% endif %}
