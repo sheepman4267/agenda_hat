@@ -22,7 +22,7 @@
             {{ item.text }}
             {% if item %}
                 <section class="tool-bar width:100% f-row justify-content:center">
-                    <a href="{% url 'finish-item' pk=item.pk %}"><button>Finish Item</button></a>
+                    <button hx-get="{% url 'finish-item' pk=item.pk %}" hx-swap="outerHTML" hx-target="#hat-pull" hx-select="#hat-pull">Finish Item</button>
                     <button hx-get="{% url 'defer-item' pk=item.pk %}" hx-swap="outerHTML">Table Item</button>
                 </section>
             {% endif %}
